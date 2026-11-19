@@ -11,24 +11,10 @@ from "react-icons/hi";
 
 const ProfilePage = async () => {
 
-  const { user, isPending } = await auth.api.getSession({
+  const session = await auth.api.getSession({
     headers: await headers(),
   });
-//   console.log(user);
-
-
-  if (isPending) {
-    return (
-      <ProgressBar aria-label="Loading" className="w-64" value={100}>
-        <Label>Loading</Label>
-        <ProgressBar.Output />
-        <ProgressBar.Track>
-          <ProgressBar.Fill />
-        </ProgressBar.Track>
-      </ProgressBar>
-    );
-  }
-
+  const user = session?.user
 
 
   return (
